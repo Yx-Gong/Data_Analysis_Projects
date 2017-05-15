@@ -1,0 +1,27 @@
+# This is for the NFL Data Analysis project
+print("NFL Data Analysis")
+
+#install.packages(c( "XML" , "RSQLite" , "stringr" , "ggplot2","easypackages"  ))
+
+library(easypackages)
+# easypackages is for load multiple packages at a time.
+libraries("XML","RSQLite","stringr","ggplot2")
+# XML package helps to read the HTML data we pull from Web
+# RSQLite and stringr are for data manipulation
+# ggplot2 is for plotting
+
+setwd("C:/Users/yuxiang.gong/Desktop/YGong_files/RPy_cookbook/NFL")
+Offence <- read.csv("NFL2016Offence.csv", header = TRUE)
+#Data was collected at https://sports.yahoo.com/nfl/stats/byteam?group=Offense&cat=Total&conference=NFL&year=season_2016&sort=530&old_category=Total&old_group=Offense and stored at the local as a csv file.
+#Offence data was cleaned in the excel
+
+Defence <- read.csv("NFL2016Defence.csv", header = TRUE)
+#With the same method, we download the defence data from https://sports.yahoo.com/nfl/stats/byteam?group=Defense&cat=Total&conference=NFL&year=season_2016&sort=530&old_category=Total&old_group=Offense and save the file as a csv file
+
+head(Defence)
+# we saw that there are empty columns between the data
+
+Defence <- Defence [,-c(2,4,6,8,10,12,14,16,18,20,22,24,26,28)]
+# delete the empty columns
+
+#Now both the Offence and Defence datasets are clean
