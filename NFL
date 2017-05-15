@@ -1,6 +1,8 @@
 # This is for the NFL Data Analysis project
 print("NFL Data Analysis")
 
+# 1. Packages and Getting Data
+
 #install.packages(c( "XML" , "RSQLite" , "stringr" , "ggplot2","easypackages"  ))
 
 library(easypackages)
@@ -24,4 +26,26 @@ head(Defence)
 Defence <- Defence [,-c(2,4,6,8,10,12,14,16,18,20,22,24,26,28)]
 # delete the empty columns
 
-#Now both the Offence and Defence datasets are clean
+
+# 2. Combine Datasets for further analysis
+#Now both the Offence and Defence datasets are clean, we are going to combine them as ONE dataset
+# Some column names are same, we will need to change it
+
+combined <- merge(Offence, Defence, by.x="Team", by.y="Team")
+colnames(combined)[2] <- "Games"
+combined$G.y <- NULL
+# since the G.x and G.y are same, both indicate the game. We only kept the G.x and renamed it as Games.
+
+# rename the offence data
+colnames(combined)[3] <- "OffPPG"
+colnames(combined)[4] <- "OffYPG"
+colnames(combined)[5] <- "OffPassYPG"
+colnames(combined)[6] <- "OffRushYPG"
+
+# rename the defence data
+colnames(combined)[15] <- "DefPPG"
+colnames(combined)[16] <- "DefYPG"
+colnames(combined)[17] <- "DefRushYPG"
+colnames(combined)[18] <- "DefPassYPG"
+
+View(combined)
