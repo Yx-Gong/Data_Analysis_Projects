@@ -49,3 +49,19 @@ colnames(combined)[17] <- "DefRushYPG"
 colnames(combined)[18] <- "DefPassYPG"
 
 View(combined)
+
+# 3. exloring data
+
+# 3.1 exploring the offencedate, taking the offPPG as example
+hist(combined$OffPPG, breaks=10, main="Offensive Points Per
+Game", xlab="Offensive PPG",ylab="Number of Teams")
+summary(combined$OffPPG)
+#From the histogram, we know that
+# 1) Most teams' offensive points per game is between 17 to 27
+# 2) one team was the extremly high and the points are more than 33.
+
+# 3.2 exploring the defencedata, taking the defPPG as example
+hist(combined$DefPPG, breaks=10, main="Defensive Points Per
+Game", xlab="Defensive PPG",ylab="Number of Teams")
+summary(combined$DefPPG)
+
